@@ -7,11 +7,9 @@ public class PiedraPapelyTijera {
 
         //*********************************************************************************************
         //VARIABLES
-
-
-        int eleccionUsuario = 0;
         int puntajeJugador = 0;
         int puntajeMaquina = 0;
+        boolean isFinish = true;
         String mensajeInicial = """
                 ¡¡Bienvenido a la competencia del siglo de PIEDRA, PAPEL O TIJERA!!
                 (TAN TAN TAAAANNN TAAAAAAAAAAAN)
@@ -44,12 +42,12 @@ public class PiedraPapelyTijera {
         //*********************************************************************************************
         //CODIGO
 
-        while (puntajeJugador < 3 && puntajeMaquina < 3){
+        while (isFinish){
             int numeroAleatorio = new Random().nextInt(3) + 1;
             System.out.println("Aca te muestro el numerito para que testees  " + numeroAleatorio + "  El numerito de la suerte siiiuuuuu");
             System.out.println("\n********************************************************************************************");
             System.out.println("Presiona 1 para elegir PIEDRA, presiona 2 para elegir PAPEL o presiona 3 para elegir TIJERA");
-            eleccionUsuario = teclado.nextInt();
+            int eleccionUsuario = teclado.nextInt();
             System.out.println("********************************************************************************************\n");
 
             switch (eleccionUsuario){
@@ -60,21 +58,21 @@ public class PiedraPapelyTijera {
                         System.out.println("¡Empate, nadie recibe puntos!\n");
                         String totalidadPuntaje = String.format("%s %d %s - VENEMACHINE %d %s ",nombreUsuario,puntajeJugador,(puntajeJugador == 1 ? "punto" : "puntos"),puntajeMaquina,(puntajeMaquina == 1 ? "punto" : "puntos"));
                         System.out.println(totalidadPuntaje + "\n");
-                    } else if (eleccionUsuario == 1 && numeroAleatorio == 3) {
+                    } else if (numeroAleatorio == 3) {
                         String mensajeGana = String.format("%s elegiste PIEDRA y la VENEMACHINE eligió TIJERA", nombreUsuario);
                         System.out.println(mensajeGana + "\n");
                         System.out.println("¡¡INCREIBLE!! La PIEDRA ha destrozado en mil pedazos a la TIJERA.. Enhorabuena lo lograste, has ganado un punto. \n");
                         puntajeJugador++;
                         String totalidadPuntaje = String.format("%s %d %s - VENEMACHINE %d %s ",nombreUsuario,puntajeJugador,(puntajeJugador == 1 ? "punto" : "puntos"),puntajeMaquina,(puntajeMaquina == 1 ? "punto" : "puntos"));
                         System.out.println(totalidadPuntaje + "\n");
-                    } else if (eleccionUsuario == 1 && numeroAleatorio == 2) {
+                    } else{
                         String mensajePierde = String.format("%s elegiste PIEDRA y la VENEMACHINE eligió PAPEL", nombreUsuario);
                         System.out.println(mensajePierde + "\n");
                         System.out.println("¡¡ASOMBROSO!! La PIEDRA ha sido asfixiada por el PAPEL.. Lo lamento, perdiste, VENEMACHINE ha ganado un punto. \n");
                         puntajeMaquina++;
                         String totalidadPuntaje = String.format("%s %d %s - VENEMACHINE %d %s ",nombreUsuario,puntajeJugador,(puntajeJugador == 1 ? "punto" : "puntos"),puntajeMaquina,(puntajeMaquina == 1 ? "punto" : "puntos"));
                         System.out.println(totalidadPuntaje + "\n");
-                    };
+                    }
                     break;
                 case 2:
                     if (eleccionUsuario == numeroAleatorio) {
@@ -83,21 +81,21 @@ public class PiedraPapelyTijera {
                         System.out.println("¡Empate, nadie recibe puntos!\n");
                         String totalidadPuntaje = String.format("%s %d %s - VENEMACHINE %d %s ",nombreUsuario,puntajeJugador,(puntajeJugador == 1 ? "punto" : "puntos"),puntajeMaquina,(puntajeMaquina == 1 ? "punto" : "puntos"));
                         System.out.println(totalidadPuntaje + "\n");
-                    }else if (eleccionUsuario == 2 && numeroAleatorio == 1) {
+                    }else if (numeroAleatorio == 1) {
                         String mensajeGana = String.format("%s elegiste PAPEL y la VENEMACHINE eligió PIEDRA", nombreUsuario);
                         System.out.println(mensajeGana + "\n");
                         System.out.println("¡¡NO LO PUEDO CREER!! El PAPEL ha dejado sin oxigeno a la PIEDRA.. Enhorabuena lo lograste, has ganado un punto.\n");
                         puntajeJugador++;
                         String totalidadPuntaje = String.format("%s %d %s - VENEMACHINE %d %s ",nombreUsuario,puntajeJugador,(puntajeJugador == 1 ? "punto" : "puntos"),puntajeMaquina,(puntajeMaquina == 1 ? "punto" : "puntos"));
                         System.out.println(totalidadPuntaje + "\n");
-                    }else if (eleccionUsuario == 2 && numeroAleatorio == 3) {
+                    }else{
                         String mensajePierde = String.format("%s elegiste PAPEL y la VENEMACHINE eligió TIJERA", nombreUsuario);
                         System.out.println(mensajePierde + "\n");
                         System.out.println("¡¡WOW!! Las TIJERAS le han cortado las esperanzas al PAPEL.. Lo lamento, perdiste, VENEMACHINE ha ganado un punto.\n");
                         puntajeMaquina++;
                         String totalidadPuntaje = String.format("%s %d %s - VENEMACHINE %d %s ",nombreUsuario,puntajeJugador,(puntajeJugador == 1 ? "punto" : "puntos"),puntajeMaquina,(puntajeMaquina == 1 ? "punto" : "puntos"));
                         System.out.println(totalidadPuntaje + "\n");
-                    };
+                    }
                     break;
                 case 3:
                     if (eleccionUsuario == numeroAleatorio) {
@@ -106,26 +104,34 @@ public class PiedraPapelyTijera {
                         System.out.println("¡Empate, nadie recibe puntos!\n");
                         String totalidadPuntaje = String.format("%s %d %s - VENEMACHINE %d %s ",nombreUsuario,puntajeJugador,(puntajeJugador == 1 ? "punto" : "puntos"),puntajeMaquina,(puntajeMaquina == 1 ? "punto" : "puntos"));
                         System.out.println(totalidadPuntaje + "\n");
-                    }else if (eleccionUsuario == 3 && numeroAleatorio == 2) {
+                    }else if (numeroAleatorio == 2) {
                         String mensajeGana = String.format("%s elegiste TIJERA y la VENEMACHINE eligió PAPEL", nombreUsuario);
                         System.out.println(mensajeGana + "\n");
                         System.out.println("¡¡QUE BARBARIDAD!! La TIJERA desgarra al PAPEL con facilidad.. Enhorabuena lo lograste, has ganado un punto.\n");
                         puntajeJugador++;
                         String totalidadPuntaje = String.format("%s %d %s - VENEMACHINE %d %s ",nombreUsuario,puntajeJugador,(puntajeJugador == 1 ? "punto" : "puntos"),puntajeMaquina,(puntajeMaquina == 1 ? "punto" : "puntos"));
                         System.out.println(totalidadPuntaje + "\n");
-                    }else if (eleccionUsuario == 3 && numeroAleatorio == 1) {
+                    }else{
                         String mensajePierde = String.format("%s elegiste TIJERA y la VENEMACHINE eligió PIEDRA", nombreUsuario);
                         System.out.println(mensajePierde + "\n");
                         System.out.println("¡¡DE PELICULA!! La PIEDRA arremete sin piedad y destroza a las TIJERAS.. Lo lamento, perdiste, VENEMACHINE ha ganado un punto.\n");
                         puntajeMaquina++;
                         String totalidadPuntaje = String.format("%s %d %s - VENEMACHINE %d %s ",nombreUsuario,puntajeJugador,(puntajeJugador == 1 ? "punto" : "puntos"),puntajeMaquina,(puntajeMaquina == 1 ? "punto" : "puntos"));
                         System.out.println(totalidadPuntaje + "\n");
-                    };
+                    }
                     break;
                 default:
-                    System.out.println("Elección invalida, presiona 1 para elegir PIEDRA, presiona 2 para elegir PAPEL o presiona 3 para elegir TIJERA");
+                    System.out.println("Elección invalida, presiona 1 para elegir PIEDRA, presiona 2 para elegir PAPEL o presiona 3 para elegir TIJERA.\n");
                     break;
             }
+                if(puntajeJugador == 3 || puntajeMaquina == 3){
+                    if (puntajeJugador == 3){
+                        System.out.println(" Y el GANADOR es ¡¡¡ " + nombreUsuario + "!!!");
+                    }else {
+                        System.out.println("Gano la maravillosa venemachine");
+                    }
+                    isFinish = false;
+                }
         }
     }
 }
